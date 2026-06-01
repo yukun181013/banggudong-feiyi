@@ -2,7 +2,9 @@
 
 > 围绕福建莆田国家级非物质文化遗产 **梆鼓咚** 打造的数字化展示与体验网站 —— 集非遗科普、传承人介绍、在线课程、文创商城、互动小游戏与 AI 问答于一体。
 
-🌐 **在线访问**:<https://chuyi-feiyi.vercel.app>
+🌐 **在线访问**:
+> - 🇨🇳 国内:<https://yukun181013.github.io/chuyi-feiyi/>(GitHub Pages)
+> - 🌍 海外:<https://chuyi-feiyi.vercel.app>(Vercel)
 
 ---
 
@@ -33,7 +35,7 @@
 - **React 19** + **Vite 8**（无 TypeScript，源码为 `.jsx` / `.js`）
 - **哈希路由**：无路由库，基于 `window.location.hash` + `hashchange` 实现（`#/home`、`#/works` …）
 - **Unity WebGL**：`public/game/` 内嵌预构建游戏，通过 `<iframe>` 加载
-- **AI 问答**：Vercel Serverless 函数 `api/qa.js` 转发到 NVIDIA NIM（`meta/llama-3.1-8b-instruct`）
+- **AI 问答**：两套后端——Vercel 部署用 Serverless 函数 `api/qa.js` 转发到 NVIDIA NIM（`meta/llama-3.1-8b-instruct`）；纯静态 / 国内部署（设 `VITE_ZHIPU_API_KEY`）则由前端直连智谱 `GLM-4-Flash`（支持 CORS、国内可访问、无需后端）
 - **状态**：全部集中在单一 `App` 组件，认证信息持久化到 `localStorage`
 - **部署**：Vercel（push 到 `main` 自动部署）
 
@@ -82,3 +84,16 @@ NVIDIA_API_KEY=your_nvidia_api_key_here   # AI 问答所需
 - **开 PR / 推分支** → 自动生成 Preview 预览环境
 
 AI 问答所需的 `NVIDIA_API_KEY` 配置在 Vercel 项目的环境变量中（不写入代码仓库）。Unity 游戏资源已解压为非压缩格式，无需服务器额外设置 `Content-Encoding` 即可在任意静态托管正常加载。
+
+### 国内访问（GitHub Pages）
+
+由于 Vercel 在中国大陆访问不稳定，另用 **GitHub Pages** 部署了一份国内可访问版本（`gh-pages` 分支），AI 问答改为前端直连免费的智谱 `GLM-4-Flash`，无需后端：
+
+- 访问地址:<https://yukun181013.github.io/chuyi-feiyi/>
+- 构建（子路径 + 智谱直连）:
+  ```bash
+  VITE_BASE=/chuyi-feiyi/ VITE_ZHIPU_API_KEY=<你的智谱key> pnpm build
+  ```
+  - `VITE_BASE` 让资源适配 `/chuyi-feiyi/` 子路径；`VITE_ZHIPU_API_KEY` 注入后前端即走智谱直连。
+- 部署:将构建产物 `dist/` 推送到 `gh-pages` 分支，GitHub Pages 会自动发布。
+- ⚠️ 注意:`VITE_` 变量会被打包进前端、对外可见，请使用免费额度的 key 并按需轮换。
