@@ -1,0 +1,13 @@
+# 体积大且站点未引用的素材 / 源工程，排除以加快上传
+梆鼓咚webGL
+.playwright-mcp
+docs
+home-full.jpeg
+public/ppt-assets
+public/ppt-extract
+
+# 本地构建产物（Vercel 会在云端重新构建）与文档
+dist
+*.md
+.claude
+.github
