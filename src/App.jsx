@@ -584,10 +584,33 @@ function App() {
     if (!question.trim()) { setError('请输入问题后再发送。'); return }
     setIsLoading(true); setError(''); setAnswer(''); setAskedQuestion(question)
     try {
-      const res = await fetch('/api/qa', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ question }) })
-      const data = await res.json()
-      if (!res.ok) throw new Error(data.error || '问答接口暂时不可用。')
-      setAnswer(data.answer)
+      // 若配置了智谱 key（VITE_ZHIPU_API_KEY），浏览器直连 GLM-4-Flash —— 这样纯静态
+      // 托管（Gitee / GitHub Pages，国内可访问）也能用 AI 问答，无需后端；否则回退到
+      // /api/qa 后端（Vercel，密钥在服务端不外泄）。
+      const zhipuKey = import.meta.env.VITE_ZHIPU_API_KEY
+      if (zhipuKey) {
+        const res = await fetch('https://open.bigmodel.cn/api/paas/v4/chat/completions', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${zhipuKey}` },
+          body: JSON.stringify({
+            model: 'glm-4-flash',
+            messages: [
+              { role: 'system', content: '你是梆鼓咚非遗课程网站的 AI 助手。请用简洁、自然、面向学生和公众的中文直接回答，不要输出思考过程，优先回答课程学习、非遗背景、传播方式、文创体验等问题。' },
+              { role: 'user', content: question },
+            ],
+            temperature: 0.7,
+            max_tokens: 512,
+          }),
+        })
+        const data = await res.json()
+        if (!res.ok) throw new Error(data.error?.message || '问答接口暂时不可用。')
+        setAnswer(data.choices?.[0]?.message?.content?.trim() || '接口已连通，但本次没有返回可显示的内容。')
+      } else {
+        const res = await fetch('/api/qa', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ question }) })
+        const data = await res.json()
+        if (!res.ok) throw new Error(data.error || '问答接口暂时不可用。')
+        setAnswer(data.answer)
+      }
     } catch (requestError) {
       setError(requestError.message || '问答接口暂时不可用。')
     } finally {
