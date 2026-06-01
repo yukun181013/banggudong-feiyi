@@ -3,7 +3,7 @@
 > 围绕福建莆田国家级非物质文化遗产 **梆鼓咚** 打造的数字化展示与体验网站 —— 集非遗科普、传承人介绍、在线课程、文创商城、互动小游戏与 AI 问答于一体。
 
 🌐 **在线访问**:
-> - 🇨🇳 国内:<https://yukun181013.github.io/chuyi-feiyi/>(GitHub Pages)
+> - 🇨🇳 国内:<https://yukun181013.github.io/chuyi-feiyi>(GitHub Pages)
 > - 🌍 海外:<https://chuyi-feiyi.vercel.app>(Vercel)
 
 ---
