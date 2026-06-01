@@ -195,33 +195,35 @@ const INSTR_NAMES = {
 }
 
 // ── Images ────────────────────────────────────────────────────────────────
+// 资源前缀：适配子路径部署（如 Gitee Pages 的 /chuyi-feiyi/）。根路径时为空字符串。
+const ASSET_BASE = import.meta.env.BASE_URL.replace(/\/$/, '')
 const IMG = {
-  hero1: '/pptx-imgs/hero1.jpeg',
-  hero2: '/pptx-imgs/stage_perf.jpg',
-  hero3: '/pptx-imgs/hero3_new.png',
-  modCommunity: '/pptx-imgs/mod1.jpeg',
-  modDrama: '/pptx-imgs/mod2.png',
-  modDigital: '/pptx-imgs/mod3.png',
-  prod1: '/pptx-imgs/banggu_drawing.jpg',
-  prod2: '/pptx-imgs/mall_diy_kit.jpg',
-  prod3: '/pptx-imgs/banggu_instruments.jpg',
-  prod4: '/pptx-imgs/mall_pendant.jpg',
-  prod5: '/pptx-imgs/mall_ceramic.jpg',
-  prod6: '/pptx-imgs/mall_album.jpg',
-  course1: '/pptx-imgs/heritage2.png',
-  course2: '/pptx-imgs/mod2.png',
-  course3: '/pptx-imgs/mod3.png',
-  announcement: '/pptx-imgs/heritage1.jpeg',
-  dramaCard: '/pptx-imgs/mod4.png',
-  lightCard: '/pptx-imgs/mod1.jpeg',
-  stagePerf: '/pptx-imgs/stage_perf.jpg',
-  teaching: '/pptx-imgs/teaching.jpg',
-  pavilionArt: '/pptx-imgs/pavilion_art.jpg',
-  newsDangui: '/pptx-imgs/news_dangui.jpg',
-  newsMazu: '/pptx-imgs/news_mazu.jpg',
-  cultureHall: '/pptx-imgs/culture_hall.jpg',
-  bangguInstruments: '/pptx-imgs/banggu_instruments.jpg',
-  bangguDrawing: '/pptx-imgs/banggu_drawing.jpg',
+  hero1: ASSET_BASE + '/pptx-imgs/hero1.jpeg',
+  hero2: ASSET_BASE + '/pptx-imgs/stage_perf.jpg',
+  hero3: ASSET_BASE + '/pptx-imgs/hero3_new.png',
+  modCommunity: ASSET_BASE + '/pptx-imgs/mod1.jpeg',
+  modDrama: ASSET_BASE + '/pptx-imgs/mod2.png',
+  modDigital: ASSET_BASE + '/pptx-imgs/mod3.png',
+  prod1: ASSET_BASE + '/pptx-imgs/banggu_drawing.jpg',
+  prod2: ASSET_BASE + '/pptx-imgs/mall_diy_kit.jpg',
+  prod3: ASSET_BASE + '/pptx-imgs/banggu_instruments.jpg',
+  prod4: ASSET_BASE + '/pptx-imgs/mall_pendant.jpg',
+  prod5: ASSET_BASE + '/pptx-imgs/mall_ceramic.jpg',
+  prod6: ASSET_BASE + '/pptx-imgs/mall_album.jpg',
+  course1: ASSET_BASE + '/pptx-imgs/heritage2.png',
+  course2: ASSET_BASE + '/pptx-imgs/mod2.png',
+  course3: ASSET_BASE + '/pptx-imgs/mod3.png',
+  announcement: ASSET_BASE + '/pptx-imgs/heritage1.jpeg',
+  dramaCard: ASSET_BASE + '/pptx-imgs/mod4.png',
+  lightCard: ASSET_BASE + '/pptx-imgs/mod1.jpeg',
+  stagePerf: ASSET_BASE + '/pptx-imgs/stage_perf.jpg',
+  teaching: ASSET_BASE + '/pptx-imgs/teaching.jpg',
+  pavilionArt: ASSET_BASE + '/pptx-imgs/pavilion_art.jpg',
+  newsDangui: ASSET_BASE + '/pptx-imgs/news_dangui.jpg',
+  newsMazu: ASSET_BASE + '/pptx-imgs/news_mazu.jpg',
+  cultureHall: ASSET_BASE + '/pptx-imgs/culture_hall.jpg',
+  bangguInstruments: ASSET_BASE + '/pptx-imgs/banggu_instruments.jpg',
+  bangguDrawing: ASSET_BASE + '/pptx-imgs/banggu_drawing.jpg',
 }
 
 // ── Hero carousel slides ─────────────────────────────────────────────────────
@@ -361,8 +363,8 @@ const coursesData = [
   { id: 2, title: '板鼓与竹板：乐器构造与持奏方法', lessons: 4, level: '初级', image: IMG.modCommunity },
   { id: 3, title: '梆鼓咚传统曲目精讲（70余首选讲）', lessons: 5, level: '中级', image: IMG.stagePerf },
   { id: 4, title: '梆鼓咚历史源流：宋代起源与千年传承', lessons: 4, level: '初级', image: IMG.pavilionArt },
-  { id: 5, title: '四种音响技法：响鼓·边鼓·点鼓·闷鼓', lessons: 5, level: '高级', image: '/pptx-imgs/course1.png' },
-  { id: 6, title: '莆仙方言与梆鼓咚：兴化语基础与演唱押韵', lessons: 6, level: '中级', image: '/pptx-imgs/course2.png' },
+  { id: 5, title: '四种音响技法：响鼓·边鼓·点鼓·闷鼓', lessons: 5, level: '高级', image: ASSET_BASE + '/pptx-imgs/course1.png' },
+  { id: 6, title: '莆仙方言与梆鼓咚：兴化语基础与演唱押韵', lessons: 6, level: '中级', image: ASSET_BASE + '/pptx-imgs/course2.png' },
   { id: 7, title: '梆鼓咚非遗DIY：乐器制作与文创创新', lessons: 4, level: '中级', image: IMG.modDigital },
   { id: 8, title: '梆鼓咚表演实践：从依赖到独立登台', lessons: 8, level: '高级', image: IMG.teaching },
 ]
@@ -595,7 +597,7 @@ function App() {
           body: JSON.stringify({
             model: 'glm-4-flash',
             messages: [
-              { role: 'system', content: '你是梆鼓咚非遗课程网站的 AI 助手。请用简洁、自然、面向学生和公众的中文直接回答，不要输出思考过程，优先回答课程学习、非遗背景、传播方式、文创体验等问题。' },
+              { role: 'system', content: '你是梆鼓咚非遗课程网站的 AI 助手。请用简洁、自然、面向学生和公众的中文直接回答，不要输出思考过程。【梆鼓咚权威资料，回答须以此为准】梆鼓咚（别名：板鼓咚、乞丐歌、俚歌梆鼓）是福建莆田的传统鼓乐曲艺，起源于宋代、盛行于清代，流行于莆田、仙游等兴化方言地区，以莆田方言（兴化语）演唱，2023 年列入国家级非物质文化遗产，保留传统曲目 70 余首；主要乐器为板鼓和竹板，演奏有响鼓、边鼓、点鼓、闷鼓四种音响技法。优先回答课程学习、非遗背景、传播方式、文创体验等问题；若超出资料范围可据常识回答，但不要编造与梆鼓咚有关的具体史实。' },
               { role: 'user', content: question },
             ],
             temperature: 0.7,
@@ -1727,7 +1729,7 @@ function App() {
           </div>
           <div className="game-frame-wrapper">
             <iframe
-              src="/game/index.html"
+              src={ASSET_BASE + '/game/index.html'}
               title="梆鼓咚音乐节奏游戏"
               width="960"
               height="600"
