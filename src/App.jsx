@@ -195,7 +195,7 @@ const INSTR_NAMES = {
 }
 
 // ── Images ────────────────────────────────────────────────────────────────
-// 资源前缀：适配子路径部署（如 Gitee Pages 的 /chuyi-feiyi/）。根路径时为空字符串。
+// 资源前缀：适配子路径部署（如 GitHub Pages 的 /banggudong-feiyi/）。根路径时为空字符串。
 const ASSET_BASE = import.meta.env.BASE_URL.replace(/\/$/, '')
 const IMG = {
   hero1: ASSET_BASE + '/pptx-imgs/hero1.jpeg',

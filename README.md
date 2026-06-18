@@ -3,7 +3,7 @@
 > 围绕福建莆田国家级非物质文化遗产 **梆鼓咚** 打造的数字化展示与体验网站 —— 集非遗科普、传承人介绍、在线课程、文创商城、互动小游戏与 AI 问答于一体。
 
 🌐 **在线访问**:
-> - 🇨🇳 国内:<https://yukun181013.github.io/chuyi-feiyi>(GitHub Pages)
+> - 🇨🇳 国内:<https://yukun181013.github.io/banggudong-feiyi>(GitHub Pages)
 > - 🌍 海外:<https://chuyi-feiyi.vercel.app>(Vercel)
 
 ---
@@ -89,11 +89,11 @@ AI 问答所需的 `NVIDIA_API_KEY` 配置在 Vercel 项目的环境变量中（
 
 由于 Vercel 在中国大陆访问不稳定，另用 **GitHub Pages** 部署了一份国内可访问版本（`gh-pages` 分支），AI 问答改为前端直连免费的智谱 `GLM-4-Flash`，无需后端：
 
-- 访问地址:<https://yukun181013.github.io/chuyi-feiyi/>
+- 访问地址:<https://yukun181013.github.io/banggudong-feiyi/>
 - 构建（子路径 + 智谱直连）:
   ```bash
-  VITE_BASE=/chuyi-feiyi/ VITE_ZHIPU_API_KEY=<你的智谱key> pnpm build
+  VITE_BASE=/banggudong-feiyi/ VITE_ZHIPU_API_KEY=<你的智谱key> pnpm build
   ```
-  - `VITE_BASE` 让资源适配 `/chuyi-feiyi/` 子路径；`VITE_ZHIPU_API_KEY` 注入后前端即走智谱直连。
+  - `VITE_BASE` 让资源适配 `/banggudong-feiyi/` 子路径；`VITE_ZHIPU_API_KEY` 注入后前端即走智谱直连。
 - 部署:将构建产物 `dist/` 推送到 `gh-pages` 分支，GitHub Pages 会自动发布。
 - ⚠️ 注意:`VITE_` 变量会被打包进前端、对外可见，请使用免费额度的 key 并按需轮换。
