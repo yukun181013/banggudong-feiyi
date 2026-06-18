@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#C0392B" />
+    <meta name="msapplication-TileColor" content="#C0392B" />
+
+    <!-- PWA 配置 -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="梆鼓咚非遗" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <!-- SEO 优化 -->
+    <meta name="description" content="创艺非遗梆鼓咚数字化平台，包含创艺课程、AI 智能问答、游戏展示与传承集市。探索福建莆田国家级非物质文化遗产，传承千年鼓乐文化。" />
+    <meta name="keywords" content="梆鼓咚,非遗,莆田,福建,鼓乐,传统文化,数字博物馆,传承" />
+    <meta name="author" content="梆鼓咚非遗传承项目组" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / 社交媒体 -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="创艺非遗 | 梆鼓咚数字化创意平台" />
+    <meta property="og:description" content="探索福建莆田国家级非物质文化遗产，传承千年鼓乐文化。" />
+    <meta property="og:site_name" content="梆鼓咚非遗门户" />
+    <meta property="og:locale" content="zh_CN" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="创艺非遗 | 梆鼓咚数字化创意平台" />
+    <meta name="twitter:description" content="探索福建莆田国家级非物质文化遗产，传承千年鼓乐文化。" />
+
+    <!-- 性能优化：预连接 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+    <!-- 图标 -->
+    <link rel="icon" type="image/svg+xml" href="/banggudong-feiyi/favicon.svg" />
+    <link rel="apple-touch-icon" href="/banggudong-feiyi/favicon.svg" />
+    <link rel="mask-icon" href="/banggudong-feiyi/favicon.svg" color="#C0392B" />
+
+    <!-- 字体加载 -->
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+
+    <!-- 资源预加载 -->
+    <link rel="preload" href="/banggudong-feiyi/pptx-imgs/hero1.jpeg" as="image" type="image/jpeg" />
+    <link rel="preload" href="/banggudong-feiyi/favicon.svg" as="image" type="image/svg+xml" />
+
+    <title>创艺非遗 | 梆鼓咚数字化创意平台</title>
+
+    <!-- 首屏关键 CSS -->
+    <style>
+      /* 防止字体加载前的闪烁 */
+      html { font-family: 'Ma Shan Zheng', 'STKaiti', 'KaiTi', cursive; }
+      /* 加载占位 */
+      #root:empty::before {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 60px;
+        margin: 40vh auto 0;
+        border: 3px solid #f3e5d8;
+        border-top-color: #C0392B;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+      @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+    <script type="module" crossorigin src="/banggudong-feiyi/assets/index-BQg1_Mhl.js"></script>
+    <link rel="stylesheet" crossorigin href="/banggudong-feiyi/assets/index-Cjv5laOk.css">
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- 性能监控（可选） -->
+    <script>
+      if ('performance' in window) {
+        window.addEventListener('load', () => {
+          setTimeout(() => {
+            const perfData = performance.getEntriesByType('navigation')[0];
+            if (perfData) {
+              console.log('⏱️ 页面加载时间:', Math.round(perfData.loadEventEnd), 'ms');
+            }
+          }, 0);
+        });
+      }
+    </script>
+  </body>
+</html>
